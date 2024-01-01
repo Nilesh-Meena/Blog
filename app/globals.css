@@ -2,7 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+@font-face {
+  font-family: "Domain";
+  src: url("/public/assets/DomaineDisplay.ttf");
+}
+
+@font-face {
+  font-family: "TWLight";
+  src: url("/public/assets/Tw\ Cen\ W01\ Light.ttf");
+}
+@font-face {
+  font-family: "TWMedium";
+  src: url("/public/assets/Tw\ Cen\ W01\ Medium.ttf");
+}
+
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -24,4 +38,4 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
+} */
