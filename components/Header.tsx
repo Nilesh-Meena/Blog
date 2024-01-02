@@ -1,25 +1,16 @@
 import React from "react";
-// import localFont from "next/font/local";
-
-// const myFontDomain = localFont({ src: "../public/assets/DomaineDisplay.ttf" });
-// const myFontLight = localFont({ src: "../public/assets/Tw Cen W01 Light.ttf" });
-// const myFontMedium = localFont({
-//   src: "../public/assets/Tw Cen W01 Medium.ttf",
-// });
 
 function Header() {
   return (
-    <main className="mx-8 px-8">
-      <div className="font-TWLight">
-        EVERYTHING IS PERSONAL. INCLUDING THIS BLOG.
+    <div className="border border-solid rounded-3xl border-black box-border shadow-[0.25rem_0.25rem_rgba(0,0,0)] fixed top-6 left-2 right-2 bg-white z-50">
+      <div className="flex justify-between  p-4">
+        <div>Hello</div>
+        <div>Hello</div>
+        <div>Hello</div>
+        <div>Hello</div>
+        <div>Hello</div>
       </div>
-      <div className="font-Domain">
-        EVERYTHING IS PERSONAL. INCLUDING THIS BLOG.
-      </div>
-      <div className="font-TWMedium">
-        EVERYTHING IS PERSONAL. INCLUDINsG THIS BLOG.ss
-      </div>
-    </main>
+    </div>
   );
 }
 

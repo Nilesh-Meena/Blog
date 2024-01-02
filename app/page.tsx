@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main className="overflow-hidden">
       <Navbar />
-      Home Page
+      <div className="mt-10">Home Page</div>
       <Button />
     </main>
   );
