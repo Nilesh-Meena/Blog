@@ -17,7 +17,7 @@ const config: Config = {
       },
       colors: {
         "black-100": "#2B2C35",
-        "button-hover": {
+        "button-primary": {
           DEFAULT: "#ff90e8",
         },
         "primary-blue": {

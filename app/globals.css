@@ -16,6 +16,10 @@
   src: url("/public/assets/Tw\ Cen\ W01\ Medium.ttf");
 }
 
+/* styles.css */
+html {
+  overflow-y: scroll;
+}
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
