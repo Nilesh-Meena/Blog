@@ -73,7 +73,7 @@ const Navbar = () => {
 
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      setIsScrolled(scrollY > 10);
+      setIsScrolled(scrollY > 20);
     };
 
     // Check screen size on mount and whenever the window size changes
