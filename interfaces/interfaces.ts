@@ -8,6 +8,15 @@ export interface ButtonProps {
 // interface for navlinks
 
 export interface NavLinksProps {
+  className?: string;
   href: string;
   children: React.ReactNode;
+}
+
+// interface for mobile navlinks
+export interface NavMobileLinksProps {
+  href: string;
+  className?: string;
+  children: React.ReactNode;
+  toggle: () => void;
 }
