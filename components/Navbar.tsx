@@ -5,7 +5,6 @@ import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
-
 import { NavLinksProps, NavMobileLinksProps } from "@/interfaces/interfaces";
 import { searchIcon } from "@/public/Icons";
 
@@ -20,23 +19,19 @@ const MobileLink = ({
 
   const handleClick = () => {
     toggle();
-
     router.push(href);
   };
+
   return (
     <button
       className={`${className} relative group text-light dark:text-dark my-2`}
       onClick={handleClick}
     >
       <a href={href}>{children}</a>
-
       <span
-        className={`h-[1px] inline-block   bg-light absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 
-        ${pathName === href ? "w-full" : "w-0"} dark:bg-dark
-        `}
-      >
-        &nbsp;
-      </span>
+        className={`h-[1px] inline-block bg-light absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 
+        ${pathName === href ? "w-full" : "w-0"} dark:bg-dark`}
+      ></span>
     </button>
   );
 };
@@ -45,17 +40,18 @@ const NavLinks = ({ href, children, className }: NavLinksProps) => {
   const pathname: string = usePathname();
   const isActive = pathname === href;
 
-  const defaultClasses = ` inline-block align-middle text-ellipsis  border border-solid
-  transition-[0.2s] px-3 py-2  relative
-  border-transparent hover:border hover:border-solid hover:border-black rounded-3xl
-  hover:shadow-[0.25rem_0.25rem_rgba(0,0,0)] hover:translate-x-[-0.25rem]
-  hover:translate-y-[-0.25rem] active:translate-x-0 active:shadow-none `;
+  const defaultClasses = `inline-block align-middle text-ellipsis border border-solid
+    transition-[0.2s] px-3 py-2 relative
+    border-transparent hover:border hover:border-solid hover:border-black rounded-3xl
+    hover:shadow-[0.25rem_0.25rem_rgba(0,0,0)] hover:translate-x-[-0.25rem]
+    hover:translate-y-[-0.25rem] active:translate-x-0 active:shadow-none`;
 
   const activeClasses = `text-ellipsis px-3 py-2 border border-solid border-black rounded-3xl shadow-[0.25rem_0.25rem_rgba(0,0,0)]`;
   const linkClasses = clsx(
     isActive ? activeClasses : defaultClasses,
     className
   );
+
   return (
     <Link href={href} className={linkClasses}>
       {children}
@@ -74,13 +70,10 @@ const Navbar = () => {
         setIsOpen(false);
       }
     };
+
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      if (scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(scrollY > 10);
     };
 
     // Check screen size on mount and whenever the window size changes
@@ -101,10 +94,10 @@ const Navbar = () => {
 
   return (
     <main className="mx-4">
-      <div className="mx-4 w-auto  md:h-[64px] border border-solid rounded-3xl border-black box-border shadow-[0.25rem_0.25rem_rgba(0,0,0)] fixed top-6 left-2 right-2 bg-white z-50">
+      <div className="mx-4 w-auto md:h-[64px] border border-solid rounded-3xl border-black box-border shadow-[0.25rem_0.25rem_rgba(0,0,0)] fixed top-6 left-2 right-2 bg-white z-50">
         <div className="px-4 md:px-10 md:py-1">
           <div className="flex h-full w-full justify-between items-center p-2 mx-auto">
-            {/* hamburger Meny */}
+            {/* hamburger Menu */}
             <div className="flex h-full lg:hidden">
               <button
                 className="outline-none mobile-menu-button"
@@ -145,15 +138,18 @@ const Navbar = () => {
               </div>
             )}
             {/* Nav Items */}
-
-            <div className="hidden lg:flex space-x-2 h-full relative w-70%">
+            <div
+              className={`hidden lg:flex space-x-2 h-full relative ${
+                isOpen
+                  ? "flex flex-col items-center justify-center w-full"
+                  : "w-70%"
+              }`}
+            >
               <NavLinks href="/Technology">Technology</NavLinks>
-              {/* <NavLinks href="/Technology">Tutorials</NavLinks> */}
               <NavLinks href="/Innovation">Innovation</NavLinks>
               <NavLinks href="/News">News</NavLinks>
               <NavLinks href="/">About us</NavLinks>
             </div>
-
             {/* Search and Subscribe */}
             {!isOpen && (
               <div className="flex space-x-1 relative w-10%">
