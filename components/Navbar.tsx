@@ -145,7 +145,9 @@ const Navbar = () => {
                   : "w-70%"
               }`}
             >
+              <NavLinks href="/">Home</NavLinks>
               <NavLinks href="/Technology">Technology</NavLinks>
+              <NavLinks href="/">Tutorials</NavLinks>
               <NavLinks href="/Innovation">Innovation</NavLinks>
               <NavLinks href="/News">News</NavLinks>
               <NavLinks href="/">About us</NavLinks>

@@ -20,3 +20,10 @@ export interface NavMobileLinksProps {
   children: React.ReactNode;
   toggle: () => void;
 }
+
+// interface for article component
+export interface ArticleProps {
+  title: string;
+  coverImage: string;
+  description: string;
+}
