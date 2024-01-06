@@ -16,6 +16,17 @@ const config: Config = {
         TWMedium: ["TWMedium", "sans-serif"],
       },
       colors: {
+        "prime-yellow": "#FFC900",
+        "prime-yello-secondary": "#FFF503",
+        "prime-pink": "#FF90E8",
+        "prime-blue": "#38DBFF",
+        "prime-orange": "#FFB443",
+        "prime-red": "#FF5D5D",
+        "prime-green": "#00FF75",
+        "prime-purple": "#DD7DFF",
+
+        "prime-dark": "#000",
+
         "black-100": "#2B2C35",
         "button-primary": {
           DEFAULT: "#ff90e8",

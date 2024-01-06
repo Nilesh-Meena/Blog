@@ -5,7 +5,7 @@ import Image from "next/image";
 import { ArticleProps } from "@/interfaces/interfaces";
 
 const ArticleAuthor = ({ author }: { author: string }) => (
-  <div className="flex space-x-2">
+  <div className="px-4 py-4 flex space-x-2">
     <div className="flex items-center space-x-2">
       <Image
         src="/images/Avatar.jpg"
@@ -28,37 +28,38 @@ const ArticleComponent = ({ title, coverImage, description }: ArticleProps) => {
   return (
     <li className="relative w-full group ">
       <div
-        className="px-4 py-4 md:w-full mb-12 ml-8 sm:ml-2
+        className=" md:w-full mb-12 ml-8 sm:ml-2
           bg-light-white-100 border border-solid border-black
           transition-[0.2s]
-          translate-x-[-0.25rem] translate-y-[-0.25rem] shadow-[0.25rem_0.25rem_rgba(0,0,0)] active:translate-x-0 active:shadow-none
+          rounded-md 
+          hover:translate-x-[-0.25rem] hover:translate-y-[-0.25rem] hover:shadow-[0.25rem_0.25rem_rgba(0,0,0)] active:translate-x-0 active:shadow-none
            cursor-pointer 
           
           "
       >
+        {/* Cover Image */}
+        <div className="mb-1 overflow-hidden">
+          <Image
+            src={coverImage}
+            width={20}
+            height={10}
+            layout="responsive"
+            className="w-full rounded-t-md"
+            alt="Cover Image"
+          />
+        </div>
         {/* Title */}
         <h1
-          className="text-base sm:h-[84px] md:text-xl font-bold text-gray-900 group-hover:underline
+          className="px-4 py-2 text-base sm:h-[84px] md:text-xl font-bold text-gray-900 group-hover:underline
         md:h-16 "
         >
           {title.length > 60
             ? title.slice(0, title.lastIndexOf(" ", 60)) + " ..."
             : title}
         </h1>
-        {/* Cover Image */}
-        <div className="mt-4 overflow-hidden">
-          <Image
-            src={coverImage}
-            width={20}
-            height={10}
-            layout="responsive"
-            className="transform transition-transform hover:scale-110"
-            alt="Cover Image"
-          />
-        </div>
         {/* Description */}
         <div
-          className="mt-4 mb-8 text-sm sm:text-base sm:mb-2 md:h-16
+          className="px-4 py-2 mb-8 text-sm sm:text-base sm:mb-2 md:h-16
           sm:h-16 
          "
         >

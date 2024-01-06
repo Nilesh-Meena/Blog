@@ -20,6 +20,10 @@
 html {
   overflow-y: scroll;
 }
+
+body {
+  background-color: #f2f5f2;
+}
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

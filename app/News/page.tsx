@@ -12,14 +12,7 @@ export const metadata: Metadata = {
 function News() {
   return (
     <>
-      <Head>
-        <title>News</title>
-        <meta
-          name="description"
-          content="All the latest news from the world of Software"
-        />
-      </Head>
-      <div>
+      <div className="mt-32 mx-5">
         <div>Hello, this is the News page</div>
         <ArticleCard />
       </div>

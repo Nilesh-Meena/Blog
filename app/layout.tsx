@@ -4,6 +4,8 @@ import "./globals.css";
 import { Navbar } from "@/components";
 import Footer from "@/components/Footer";
 
+// className="flex-grow mt-32 mx-5"
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -21,7 +23,7 @@ export default function RootLayout({
       <body className={`${inter.className}`}>
         <div className="flex flex-col min-h-screen">
           <Navbar />
-          <div className="flex-grow mt-32 mx-5">{children}</div>
+          <div>{children}</div>
           <Footer />
         </div>
       </body>
