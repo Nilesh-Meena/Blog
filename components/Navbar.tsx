@@ -128,7 +128,7 @@ const Navbar = () => {
   };
 
   return (
-    <main className="mx-4">
+    <main className="mx-4 z-80">
       <div className="mx-4 w-auto md:h-[64px] border border-solid rounded-3xl border-black box-border shadow-[0.25rem_0.25rem_rgba(0,0,0)] fixed top-6 left-2 right-2 bg-white z-50">
         <div className="px-4 md:px-10 md:py-1">
           <div className="flex h-full w-full justify-between items-center p-2 mx-auto">
