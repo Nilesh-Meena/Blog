@@ -1,11 +1,11 @@
 "use client";
-import { ThemeContext } from "@/context/ThemeContext";
-import React, { useContext } from "react";
 
-function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const { theme } = useContext(ThemeContext);
+import { ThemeProvider } from "next-themes";
 
-  return <div className={theme}>{children}</div>;
+export function Providers({ children }: { children: React.ReactNode }) {
+  return (
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      {children}
+    </ThemeProvider>
+  );
 }
-
-export default ThemeProvider;
