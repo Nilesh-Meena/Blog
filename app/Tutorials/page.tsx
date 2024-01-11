@@ -37,7 +37,7 @@ const Column = ({ bgColor, title, items }: column) => (
 function Tutorials() {
   return (
     <>
-      <div className="mt-12  md:mt-32 h-auto md:h-1/2">
+      <div className=" h-auto md:h-1/2 text-black">
         {/* Two columns */}
         <div className="mb-12">
           <div className="flex flex-col md:flex-row">

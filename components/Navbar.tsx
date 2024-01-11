@@ -1,12 +1,14 @@
 "use client";
+//  Make this server side component
 
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import clsx from "clsx";
-import { NavLinksProps, NavMobileLinksProps } from "@/interfaces/interfaces";
+import { NavMobileLinksProps } from "@/interfaces/interfaces";
 import { searchIcon } from "@/public/Icons";
+import AuthLinks from "./AuthLinks";
+import NavLinks from "./NavLinks";
+import Toggle from "./Toggle";
 
 const MobileLink = ({
   href,
@@ -36,65 +38,7 @@ const MobileLink = ({
   );
 };
 
-const NavLinks = ({
-  href,
-  children,
-  className,
-  dropdownItems,
-}: NavLinksProps) => {
-  const pathname: string = usePathname();
-  const [isHovered, setIsHovered] = useState(false);
-  const isActive = pathname === href;
-
-  const defaultClasses = ` align-middle text-ellipsis border border-solid
-  transition-[0.2s] px-3 py-2 relative
-  border-transparent hover:border hover:border-solid hover:border-black rounded-3xl
-  hover:shadow-[0.25rem_0.25rem_rgba(0,0,0)] hover:translate-x-[-0.25rem]
-  hover:translate-y-[-0.25rem] active:translate-x-0 active:shadow-none`;
-
-  const activeClasses = ` text-ellipsis px-3 py-2 border border-solid border-black rounded-3xl shadow-[0.25rem_0.25rem_rgba(0,0,0)] translate-x-[-0.25rem] translate-y-[-0.25rem]
- `;
-
-  const linkClasses = clsx(
-    isActive ? activeClasses : defaultClasses,
-    className
-  );
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
-  return (
-    <div className="relative group">
-      <Link
-        href={href}
-        className={linkClasses}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        {children}
-      </Link>
-      {isHovered && dropdownItems && (
-        <div className="flex flex-col">
-          {dropdownItems.map((item) => (
-            <div key={item} className="flex flex-col">
-              <span className="text-xl">{item}</span>
-              <span className="text-xl">{item}</span>
-              <span className="text-xl">{item}</span>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-};
-
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   // mobile menu is open or closed
   const [isOpen, setIsOpen] = useState(false);
 
@@ -106,19 +50,11 @@ const Navbar = () => {
       }
     };
 
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setIsScrolled(scrollY > 20);
-    };
-
     // Check screen size on mount and whenever the window size changes
     checkScreenSize();
     window.addEventListener("resize", checkScreenSize);
 
-    window.addEventListener("scroll", handleScroll);
-
     return () => {
-      window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", checkScreenSize);
     };
   }, []);
@@ -128,7 +64,7 @@ const Navbar = () => {
   };
 
   return (
-    <main className="mx-4 z-80">
+    <main className="mx-4 z-80 text-black">
       <div className="mx-4 w-auto md:h-[64px] border border-solid rounded-3xl border-black box-border shadow-[0.25rem_0.25rem_rgba(0,0,0)] fixed top-6 left-2 right-2 bg-white z-50">
         <div className="px-4 md:px-10 md:py-1">
           <div className="flex h-full w-full justify-between items-center p-2 mx-auto">
@@ -190,23 +126,17 @@ const Navbar = () => {
             {/* Search and Subscribe */}
             {!isOpen && (
               <div className="flex space-x-1 relative w-10%">
-                <Image
-                  src={searchIcon}
-                  alt="Search"
-                  width={24}
-                  height={1}
-                  className="cursor-pointer mr-4 hidden sm:block"
-                />
-                <Link
-                  href="/Subscribe"
-                  className={`hidden sm:block transition-[0.2s] px-4 py-2 rounded ${
-                    isScrolled
-                      ? "bg-emerald-500 text-white"
-                      : "bg-white text-black"
-                  } border border-solid border-black hover:bg-button-hover translate-x-[-0.25rem] translate-y-[-0.25rem] shadow-[0.25rem_0.25rem_rgba(0,0,0)] active:translate-x-0 active:shadow-none`}
-                >
-                  Subscribe
-                </Link>
+                <div className="mx-4 flex space-x-1">
+                  <Toggle />
+                  <Image
+                    src={searchIcon}
+                    alt="Search"
+                    width={24}
+                    height={1}
+                    className="cursor-pointer hidden sm:block"
+                  />
+                </div>
+                <AuthLinks />
               </div>
             )}
           </div>
