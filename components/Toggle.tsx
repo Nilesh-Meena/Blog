@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useContext, useEffect, useState } from "react";
 import { MoonIcon } from "@/components/Icons/Moon";
 import { SunIcon } from "@/components/Icons/Sun";
@@ -30,7 +32,7 @@ function Toggle() {
           onClick={() => setTheme("light")}
           className="items-center justify-center rounded-full p-1"
         >
-          <SunIcon color="black" />
+          <MoonIcon color="black" />
         </button>
       </div>
     );
@@ -42,7 +44,7 @@ function Toggle() {
           onClick={() => setTheme("dark")}
           className="items-center justify-center rounded-full p-1"
         >
-          <MoonIcon color="black" />
+          <SunIcon color="black" />
         </button>
       </div>
     );

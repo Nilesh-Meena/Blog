@@ -30,7 +30,7 @@ const ArticleComponent = ({ title, coverImage, description }: ArticleProps) => {
   return (
     <li className="relative w-full group ">
       <div
-        className=" md:w-full 
+        className=" md:w-full
           bg-light-white-100 border border-solid border-black
           transition-[0.2s]
           rounded-md 

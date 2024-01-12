@@ -19,7 +19,6 @@ export interface NavMobileLinksProps {
   href: string;
   className?: string;
   children: React.ReactNode;
-  toggle: () => void;
 }
 
 // interface for article component

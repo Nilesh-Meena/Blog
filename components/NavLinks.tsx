@@ -1,10 +1,9 @@
 "use client";
 
-import { NavLinksProps } from "@/interfaces/interfaces";
-import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
+import clsx from "clsx";
+import { NavLinksProps } from "@/interfaces/interfaces";
 
 const NavLinks = ({
   href,
@@ -12,53 +11,24 @@ const NavLinks = ({
   className,
   dropdownItems,
 }: NavLinksProps) => {
-  const pathname: string = usePathname();
-  const [isHovered, setIsHovered] = useState(false);
-  const isActive = pathname === href;
+  const path = usePathname();
+  const active = path === href;
 
-  const defaultClasses = ` align-middle text-ellipsis border border-solid
-    transition-[0.2s] px-3 py-2 relative mr-2
-    border-transparent hover:border hover:border-solid hover:border-black rounded-3xl
-    hover:shadow-[0.25rem_0.25rem_rgba(0,0,0)] hover:translate-x-[-0.25rem]
-    hover:translate-y-[-0.25rem] active:translate-x-0 active:shadow-none`;
+  const defaultClasses = `block px-2 py-2 transition-[0.2s] rounded-full border border-transparent hover:border-black hover:bg-button-hover hover:translate-x-[-0.25rem] hover:translate-y-[-0.25rem] hover:shadow-[0.25rem_0.25rem_rgba(0,0,0)] active:translate-x-0 active:shadow-none`;
 
-  const activeClasses = ` text-ellipsis px-3 py-2 border border-solid border-black rounded-3xl shadow-[0.25rem_0.25rem_rgba(0,0,0)] translate-x-[-0.25rem] translate-y-[-0.25rem]
-   `;
+  const underlineClass = `underline underline-offset-4 hover:no-underline `;
 
-  const linkClasses = clsx(
-    isActive ? activeClasses : defaultClasses,
+  const linkClass = clsx(
+    defaultClasses,
+    { [underlineClass]: active },
     className
   );
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
   return (
-    <div className="relative group">
-      <Link
-        href={href}
-        className={linkClasses}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
+    <div className="flex gap-1">
+      <Link href={href} className={linkClass}>
         {children}
       </Link>
-      {isHovered && dropdownItems && (
-        <div className="flex flex-col">
-          {dropdownItems.map((item) => (
-            <div key={item} className="flex flex-col">
-              <span className="text-xl">{item}</span>
-              <span className="text-xl">{item}</span>
-              <span className="text-xl">{item}</span>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 };

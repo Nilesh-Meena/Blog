@@ -1,162 +1,59 @@
-"use client";
-//  Make this server side component
-
-import { usePathname, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
-import { NavMobileLinksProps } from "@/interfaces/interfaces";
+
 import { searchIcon } from "@/public/Icons";
 import AuthLinks from "./AuthLinks";
 import NavLinks from "./NavLinks";
 import Toggle from "./Toggle";
-
-const MobileLink = ({
-  href,
-  children,
-  className,
-  toggle,
-}: NavMobileLinksProps) => {
-  const pathName = usePathname();
-  const router = useRouter();
-
-  const handleClick = () => {
-    toggle();
-    router.push(href);
-  };
-
-  return (
-    <button
-      className={`${className} relative group text-light dark:text-dark my-2`}
-      onClick={handleClick}
-    >
-      <a href={href}>{children}</a>
-      <span
-        className={`h-[1px] inline-block bg-light absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 
-        ${pathName === href ? "w-full" : "w-0"} dark:bg-dark`}
-      ></span>
-    </button>
-  );
-};
+import NavMobileLinks from "./NavMobileLinks";
 
 const Navbar = () => {
-  // mobile menu is open or closed
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    const checkScreenSize = () => {
-      const isLargeScreen = window.matchMedia("(min-width: 1024px)").matches;
-      if (isLargeScreen) {
-        setIsOpen(false);
-      }
-    };
-
-    // Check screen size on mount and whenever the window size changes
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-
-    return () => {
-      window.removeEventListener("resize", checkScreenSize);
-    };
-  }, []);
-
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <main className="mx-4 z-80 text-black">
-      <div className="mx-4 w-auto md:h-[64px] border border-solid rounded-3xl border-black box-border shadow-[0.25rem_0.25rem_rgba(0,0,0)] fixed top-6 left-2 right-2 bg-white z-50">
-        <div className="px-4 md:px-10 md:py-1">
-          <div className="flex h-full w-full justify-between items-center p-2 mx-auto">
-            {/* hamburger Menu */}
-            <div className="flex h-full lg:hidden">
-              <button
-                className="outline-none mobile-menu-button"
-                onClick={handleClick}
-              >
-                <svg
-                  className="w-6 h-6 text-black transition-colors duration-200 hover:text-emerald-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  transform="scale(-1, 1)"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16m-7 6h7"
-                  ></path>
-                </svg>
-              </button>
-            </div>
+      <div className="mx-4 border border-solid rounded-3xl border-black box-border shadow-[0.25rem_0.25rem_rgba(0,0,0)] fixed top-6 left-2 right-2 bg-white z-50">
+        <div className="px-4  md:px-10 md:py-2 gap-8">
+          <div className="flex ustify-between items-center h-[48px] md:h-full">
             {/* Logo */}
-            {!isOpen ? (
-              <div className="h-full space-x-2 flex items-center justify-center w-100%">
-                <div className="text-xl font-bold">Hello</div>
+
+            <div className="flex items-center justify-start w-full md:flex-1 ">
+              <div className="lg:hidden mx-2 mr-2 md:mb-0 items-center">
+                <NavMobileLinks />
               </div>
-            ) : (
-              <div className="h-full flex justify-between items-center w-full">
-                <div className="text-xl font-bold ml-8">Hello</div>
-                <button
-                  onClick={handleClick}
-                  className="relative right-0 w-6 h-6"
-                >
-                  <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-0.5 block bg-black rotate-45"></span>
-                  <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-0.5 block bg-black -rotate-45"></span>
-                </button>
+              <div className="flex text-xl font-bold justify-center md:justify-normal whitespace-nowrap  w-full">
+                InkWell
               </div>
-            )}
+            </div>
+
             {/* Nav Items */}
-            <div
-              className={`hidden lg:flex space-x-2 h-full relative ${
-                isOpen
-                  ? "flex flex-col items-center justify-center w-full"
-                  : "w-70%"
-              }`}
-            >
+            <div className="hidden lg:flex lg:gap-4 flex-1 text-center text-lg justify-center">
               <NavLinks href="/">All</NavLinks>
               <NavLinks href="/Technology">Blogs</NavLinks>
               <NavLinks href="/Tutorials">Tutorials</NavLinks>
               <NavLinks href="/">Books</NavLinks>
               <NavLinks href="/News">News</NavLinks>
-              <NavLinks href="/">About us</NavLinks>
+              <NavLinks href="/" className=" whitespace-nowrap">
+                About us
+              </NavLinks>
             </div>
+
             {/* Search and Subscribe */}
-            {!isOpen && (
-              <div className="flex space-x-1 relative w-10%">
-                <div className="mx-4 flex space-x-1">
-                  <Toggle />
-                  <Image
-                    src={searchIcon}
-                    alt="Search"
-                    width={24}
-                    height={1}
-                    className="cursor-pointer hidden sm:block"
-                  />
-                </div>
-                <AuthLinks />
+
+            <div className="flex items-center gap-2 flex-1 justify-end ">
+              <div className="hidden  mx-4 md:mr-8  md:flex space-x-1">
+                <Toggle />
+                <Image
+                  src={searchIcon}
+                  alt="Search"
+                  width={24}
+                  height={1}
+                  className="cursor-pointer "
+                />
               </div>
-            )}
+              <AuthLinks />
+            </div>
           </div>
         </div>
         {/* Mobile Menu */}
-        {isOpen && (
-          <div
-            className="min-w-[70vw] flex flex-col z-30 justify-between items-center fixed 
-            top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-neutral-900 dark:bg-light/75 rounded-lg backdrop-blur-md py-32"
-          >
-            <nav className="flex items-center flex-col justify-center">
-              <MobileLink
-                href="/"
-                children="Home"
-                className=""
-                toggle={handleClick}
-              />
-            </nav>
-          </div>
-        )}
       </div>
     </main>
   );
