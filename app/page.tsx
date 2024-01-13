@@ -8,10 +8,9 @@ export default function Home() {
     <div className="">
       <Featured />
       <CategoryList />
-      <main className="bg-red-600 h-[800px]">
+      <main className="flex gap-12">
         <CardList />
         <Menu />
-        <h1>Heelo I ma Moon</h1>
       </main>
     </div>
   );

@@ -14,7 +14,7 @@ const NavLinks = ({
   const path = usePathname();
   const active = path === href;
 
-  const defaultClasses = `block px-2 py-2 transition-[0.2s] rounded-full border border-transparent hover:border-black hover:bg-button-hover hover:translate-x-[-0.25rem] hover:translate-y-[-0.25rem] hover:shadow-[0.25rem_0.25rem_rgba(0,0,0)] active:translate-x-0 active:shadow-none`;
+  const defaultClasses = `block px-2 py-2 transition-[0.2s] rounded-full border border-transparent `;
 
   const underlineClass = `underline underline-offset-4 hover:no-underline `;
 

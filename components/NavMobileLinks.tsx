@@ -21,7 +21,7 @@ const MobileLink = ({ href, children, className }: NavMobileLinksProps) => {
 };
 
 function NavMobileLinks() {
-  const [isOpen, setOpen] = useState(true);
+  const [isOpen, setOpen] = useState(false);
 
   const handleClickOutside = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
@@ -32,6 +32,7 @@ function NavMobileLinks() {
       setOpen(false);
     }
   };
+
   if (isOpen) {
     // Attach event listener when isOpen is true
     document.addEventListener("click", handleClickOutside);

@@ -26,7 +26,7 @@ export default function RootLayout({
         <Providers>
           <div className="  min-h-screen">
             <Navbar />
-            <div className="wrapper mt-12  md:mt-32 ">{children}</div>
+            <div className="wrapper  mt-32 ">{children}</div>
             <Footer />
           </div>
         </Providers>
