@@ -28,7 +28,7 @@ const Navbar = () => {
             {/* Nav Items */}
             <div className="hidden lg:flex lg:gap-4 flex-1 text-center text-lg justify-center">
               <NavLinks href="/">All</NavLinks>
-              <NavLinks href="/Technology">Blogs</NavLinks>
+              <NavLinks href="/Blog">Blogs</NavLinks>
               <NavLinks href="/Tutorials">Tutorials</NavLinks>
               <NavLinks href="/">Books</NavLinks>
               <NavLinks href="/News">News</NavLinks>
