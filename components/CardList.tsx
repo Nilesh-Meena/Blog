@@ -5,7 +5,7 @@ import Card from "./Card";
 function CardList() {
   return (
     <div className="flex-5">
-      <h1 className="my-12 text-3xl">Recent Posts</h1>
+      <h1 className="my-12 text-3xl font-semibold">Recent Posts</h1>
 
       {/* Post */}
       <div>

@@ -22,9 +22,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} dark:bg-bgDark dark:text-white `}>
+      <body className={`${inter.className} dark:bg-[#161616] dark:text-white `}>
         <Providers>
-          <div className="  min-h-screen">
+          <div className=" ">
             <Navbar />
             <div className="wrapper  mt-32 ">{children}</div>
             <Footer />

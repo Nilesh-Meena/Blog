@@ -5,12 +5,16 @@ import { MoonIcon } from "@/components/Icons/Moon";
 import { SunIcon } from "@/components/Icons/Sun";
 import { useTheme } from "next-themes";
 import Image from "next/image";
+import { SearchIcon } from "./Icons/SearchIcon";
+import Link from "next/link";
 
 function Toggle() {
   const [mounted, setMounted] = useState(false);
   const { setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => setMounted(true), []);
+
+  const color = resolvedTheme === "dark" ? "white" : "black";
 
   if (!mounted)
     return (
@@ -27,25 +31,29 @@ function Toggle() {
 
   if (resolvedTheme === "dark") {
     return (
-      <div className="flex items-center justify-center ">
+      <div className="flex items-center justify-center gap-2 ">
         <button
           onClick={() => setTheme("light")}
           className="items-center justify-center rounded-full p-1"
         >
-          <MoonIcon color="black" />
+          <MoonIcon color={color} />
         </button>
+        <div className="cursor-pointer">
+          <SearchIcon color={color} />
+        </div>
       </div>
     );
   }
   if (resolvedTheme === "light") {
     return (
-      <div className="flex items-center justify-center ">
+      <div className="flex items-center justify-center gap-2">
         <button
           onClick={() => setTheme("dark")}
           className="items-center justify-center rounded-full p-1"
         >
-          <SunIcon color="black" />
+          <SunIcon color={color} />
         </button>
+        <SearchIcon color={color} />
       </div>
     );
   }

@@ -4,9 +4,9 @@ import React from "react";
 
 function Card() {
   return (
-    <div className="mb-12 flex gap-12 items-center ">
+    <div className="mb-12 lg:flex gap-12 items-center ">
       {/* Image */}
-      <div className="flex-1 h-[350px] relative">
+      <div className="flex-1 aspect-square md::h-[240px] lg:h-[350px] relative">
         <Image
           src="/Images/cover.jpg"
           alt="Image Icon"
@@ -15,7 +15,7 @@ function Card() {
         />
       </div>
       {/* Text */}
-      <div className="flex-1 flex flex-col gap-8">
+      <div className="flex-1 mt-3 lg:mt-0 flex flex-col gap-8">
         <div>
           <span className="text-gray-500">11/01/2024 - </span>
           <span className="text-prime-red font-medium uppercase">Coding</span>
@@ -33,7 +33,7 @@ function Card() {
         </p>
         <Link
           href="/"
-          className="border-b  border-solid border-prime-red max-w-max"
+          className="border-b border-solid border-prime-red max-w-max py-[2px]"
         >
           Read More
         </Link>

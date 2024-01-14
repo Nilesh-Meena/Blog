@@ -1,7 +1,5 @@
 import React from "react";
-import Image from "next/image";
 
-import { searchIcon } from "@/public/Icons";
 import AuthLinks from "./AuthLinks";
 import NavLinks from "./NavLinks";
 import Toggle from "./Toggle";
@@ -9,8 +7,11 @@ import NavMobileLinks from "./NavMobileLinks";
 
 const Navbar = () => {
   return (
-    <main className="mx-4 z-80 text-black  font-Domain">
-      <div className="mx-4 border border-solid rounded-3xl border-black box-border shadow-[0.25rem_0.25rem_rgba(0,0,0)] fixed top-6 left-2 right-2 bg-white z-50">
+    <main className="mx-4 z-80 text-black   font-Domain">
+      <div
+        className="mx-4 border border-solid rounded-3xl border-black box-border shadow-[0.25rem_0.25rem_rgba(0,0,0)] dark:shadow-[0.25rem_0.25rem_rgba(255,255,255)] fixed top-6 left-2 right-2 bg-white z-50
+      dark:bg-black dark:border-white dark:text-white"
+      >
         <div className="px-4  md:px-10 md:py-2 gap-8">
           <div className="flex ustify-between items-center h-[48px] md:h-full">
             {/* Logo */}
@@ -41,13 +42,6 @@ const Navbar = () => {
             <div className="flex items-center gap-2 flex-1 justify-end ">
               <div className="hidden  mx-4 md:mr-8  md:flex space-x-1">
                 <Toggle />
-                <Image
-                  src={searchIcon}
-                  alt="Search"
-                  width={24}
-                  height={1}
-                  className="cursor-pointer "
-                />
               </div>
               <AuthLinks />
             </div>

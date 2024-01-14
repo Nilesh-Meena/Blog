@@ -5,7 +5,7 @@ import React from "react";
 function CategoryList() {
   return (
     <div>
-      <h1 className="font-Domain my-12 text-3xl">Categories</h1>
+      <h1 className="font-Domain my-12 text-3xl font-semibold">Categories</h1>
       {/* list */}
       <div className="flex flex-wrap  justify-between gap-5">
         <Link

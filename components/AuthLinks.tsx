@@ -25,9 +25,11 @@ function AuthLinks() {
       {!isAuthenticated ? (
         <Link
           href="/Subscribe"
-          className={`hidden sm:block transition-[0.2s] px-6 py-2 rounded ${
-            isScrolled ? "bg-emerald-500 text-white" : "bg-white text-black"
-          } border border-solid border-black  translate-x-[-0.25rem] translate-y-[-0.25rem] shadow-[0.25rem_0.25rem_rgba(0,0,0)] active:translate-x-0 active:shadow-none`}
+          className={`hidden font-TWMedium font-bold dark:bg-black dark:active:shadow-none dark:text-white sm:block transition-[0.2s] px-6 py-2 rounded ${
+            isScrolled
+              ? "bg-prime-yello-secondary dark:text-black"
+              : "bg-white text-black"
+          } border border-solid dark:border-white border-black  translate-x-[-0.25rem] translate-y-[-0.25rem] shadow-[0.25rem_0.25rem_rgba(0,0,0)] dark:shadow-[0.25rem_0.25rem_rgba(255,255,255)] active:translate-x-0 active:shadow-none`}
         >
           Login
         </Link>
@@ -35,14 +37,16 @@ function AuthLinks() {
         <div className="flex">
           <Link
             href="/"
-            className={`hidden sm:block transition-[0.2s] px-6 py-2 rounded ${
-              isScrolled ? "bg-prime-blue" : "bg-white text-black"
-            } border border-solid border-black  translate-x-[-0.25rem] translate-y-[-0.25rem] shadow-[0.25rem_0.25rem_rgba(0,0,0)] active:translate-x-0 active:shadow-none`}
+            className={`hidden dark:bg-black dark:active:shadow-none dark:text-white  sm:block transition-[0.2s] px-6 py-2 rounded ${
+              isScrolled
+                ? "bg-prime-yello-secondary dark:text-black dark:bg-prime-yello-secondary dark:border-b-black dark:border-r-black"
+                : "bg-white text-black"
+            } border border-solid border-black dark:border-white  translate-x-[-0.25rem] translate-y-[-0.25rem] shadow-[0.25rem_0.25rem_rgba(0,0,0)] dark:shadow-[0.25rem_0.25rem_rgba(255,255,255)] active:translate-x-0 active:shadow-none`}
           >
             Write
           </Link>
           <span
-            className={`ml-4 hidden sm:block transition-[0.2s] px-6 py-2 rounded border border-solid border-black translate-x-[-0.25rem] translate-y-[-0.25rem] shadow-[0.25rem_0.25rem_rgba(0,0,0)] active:translate-x-0 active:shadow-none cursor-pointer`}
+            className={`ml-4 dark:bg-black dark:active:shadow-none dark:border-white hidden sm:block transition-[0.2s] px-6 py-2 rounded border border-solid border-black translate-x-[-0.25rem] translate-y-[-0.25rem] shadow-[0.25rem_0.25rem_rgba(0,0,0)] dark:shadow-[0.25rem_0.25rem_rgba(255,255,255)] active:translate-x-0 active:shadow-none cursor-pointer`}
           >
             Logout
           </span>
