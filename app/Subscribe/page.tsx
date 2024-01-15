@@ -15,10 +15,8 @@ import { useRouter } from "next/navigation";
 function Subscribe() {
   const { data, status } = useSession();
   const router = useRouter();
-  console.log(data, status);
-  // const handleGoogleSignIn = () => {
-  //   signIn("google");
-  // };
+  // console.log(data, status);
+
   if (status === "loading") {
     return <div>Loading...</div>;
   }
