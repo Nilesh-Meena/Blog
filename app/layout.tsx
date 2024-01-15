@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Providers } from "@/providers/ThemeProvider";
+import AuthProvider from "@/providers/AuthProvider";
 
 // className="flex-grow mt-32 mx-5"
 
@@ -23,13 +24,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} dark:bg-[#161616] dark:text-white `}>
-        <Providers>
-          <div className="min-h-screen ">
-            <Navbar />
-            <div className="wrapper  mt-32 ">{children}</div>
-            <Footer />
-          </div>
-        </Providers>
+        <AuthProvider>
+          <Providers>
+            <div className="min-h-screen ">
+              <Navbar />
+              <div className="wrapper  mt-32 ">{children}</div>
+              <Footer />
+            </div>
+          </Providers>
+        </AuthProvider>
       </body>
     </html>
   );

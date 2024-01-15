@@ -43,17 +43,21 @@ function page() {
   return (
     <div>
       {/* input */}
-      <input type="text" placeholder="Title" className="text-3xl mb-4" />
+      <input
+        type="text"
+        placeholder="Title"
+        className="text-3xl  outline-none mb-4"
+      />
 
       {/* Editor */}
-      <div>
+      <div className="flex gap-5 ">
         {/* Upload Button */}
         <button onClick={() => setIsOpen(!isOpen)}>
           <Image src="/Images/plus.png" alt="Image" width={16} height={16} />
         </button>
         {isOpen && (
-          <div>
-            <button>
+          <div className="flex gap-5 ">
+            <button className="w-9 h-9 border-[#1a8917] flex cursor-pointer items-center justify-center rounded-full bg-transparent border border-solid ">
               <Image
                 src="/Images/image.png"
                 alt="Image"
@@ -61,7 +65,7 @@ function page() {
                 height={16}
               />
             </button>
-            <button>
+            <button className="w-9 h-9 flex cursor-pointer items-center justify-center rounded-full bg-transparent border border-solid border-[#1a8917] ">
               <Image
                 src="/Images/external.png"
                 alt="Image"
@@ -69,7 +73,7 @@ function page() {
                 height={16}
               />
             </button>
-            <button>
+            <button className="w-9 h-9 flex cursor-pointer items-center justify-center rounded-full bg-transparent border border-solid border-[#1a8917]">
               <Image
                 src="/Images/video.png"
                 alt="Image"
@@ -87,8 +91,8 @@ function page() {
           formats={formats}
           placeholder="Write Something..."
         /> */}
-        <Editor />
       </div>
+      {/* <Editor /> */}
 
       {/* Publish Button*/}
       <div className="w-full flex items-center justify-center gap-8">
