@@ -5,7 +5,7 @@ import { MoonIcon } from "@/components/Icons/Moon";
 import { SunIcon } from "@/components/Icons/Sun";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import { SearchIcon } from "./Icons/SearchIcon";
+import { SearchIcon } from "../Icons/SearchIcon";
 import Link from "next/link";
 
 function Toggle() {

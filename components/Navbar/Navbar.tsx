@@ -1,9 +1,10 @@
 import React from "react";
 
-import AuthLinks from "./AuthLinks";
+import AuthLinks from "../AuthLink/AuthLinks";
 import NavLinks from "./NavLinks";
-import Toggle from "./Toggle";
+import Toggle from "../ui/Toggle";
 import NavMobileLinks from "./NavMobileLinks";
+import AuthButton from "../AuthLink/AuthButton";
 
 const Navbar = () => {
   return (
@@ -43,7 +44,10 @@ const Navbar = () => {
               <div className="hidden  mx-4 md:mr-8  md:flex space-x-1">
                 <Toggle />
               </div>
-              <AuthLinks />
+              <div className="flex">
+                <AuthButton />
+                <AuthLinks />
+              </div>
             </div>
           </div>
         </div>
