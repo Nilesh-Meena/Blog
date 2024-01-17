@@ -1,3 +1,32 @@
+//  interface for homeProps in Home Pge
+
+export interface HomeProps {
+  params: { slug: string };
+  searchParams: { [key: string]: string | undefined };
+}
+
+//  interface for PostItems in CardList component
+export interface PostItem {
+  _id: string;
+  slug: string;
+  catSlug: string;
+  cat: string;
+  userEmail: string;
+  user: string;
+  comments: [];
+  img?: string;
+  title: string;
+  desc: string;
+  createdAt: string;
+  views: number;
+}
+
+// interface for CardListProps in CardList Componenet
+
+export interface CardListProps {
+  page: number;
+}
+
 // interface for the button component
 
 export interface ButtonProps {
@@ -5,7 +34,7 @@ export interface ButtonProps {
   children: React.ReactNode;
 }
 
-// interface for navlinks
+// interface for navlinks in Navbar
 
 export interface NavLinksProps {
   className?: string;

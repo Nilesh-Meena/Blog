@@ -1,12 +1,23 @@
 // get method to fetch all categories
 
 import prisma from "@/utils/connect";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async () => {
+export const GET = async (req: NextRequest) => {
+  const pageUrlQuery = req.nextUrl.searchParams.get("page");
+  const page = pageUrlQuery ? parseInt(pageUrlQuery, 10) : 1;
+  const POST_PER_PAGE = 4;
+  const query = {
+    take: POST_PER_PAGE,
+    skip: POST_PER_PAGE * (page - 1),
+  };
+  // Try and Catch
   try {
-    const categories = await prisma?.post.findMany();
-    return new NextResponse(JSON.stringify(categories), {
+    const [posts, totalPosts] = await prisma.$transaction([
+      prisma.post.findMany(query),
+      prisma.post.count(),
+    ]);
+    return new NextResponse(JSON.stringify({ posts, totalPosts }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });

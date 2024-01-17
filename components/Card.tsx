@@ -25,12 +25,7 @@ function Card() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </h1>
         </Link>
-        <p className="text-base font-light text-bgDarkTextSoft">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora
-          voluptatem quasi obcaecati tenetur quisquam deleniti, expedita non
-          beatae animi, fuga delectus, ea accusantium dolorum quod odio libero
-          corrupti mollitia ipsum!
-        </p>
+        <p className="text-base font-light text-bgDarkTextSoft"></p>
         <Link
           href="/"
           className="border-b border-solid border-prime-red max-w-max py-[2px]"
