@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import useSWR from "swr";
 import { useSession } from "next-auth/react";
@@ -19,11 +19,19 @@ const fetcher = async (url: string) => {
 
 function Comments({ postSlug }: { postSlug: string }) {
   const { status } = useSession();
-  const { data, isLoading } = useSWR(
+  const { data, mutate, isLoading } = useSWR(
     `http://localhost:3000/api/comments?postSlug=${postSlug}`,
     fetcher
   );
   // console.log(data, typeof data);
+  const [desc, setDesc] = useState("");
+  const handleSubmit = async () => {
+    await fetch("/api/comments", {
+      method: "POST",
+      body: JSON.stringify({ desc, postSlug }),
+    });
+    mutate();
+  };
 
   console.log(data);
   return (
@@ -34,8 +42,12 @@ function Comments({ postSlug }: { postSlug: string }) {
           <textarea
             placeholder="Write a comment..."
             className="p-5 w-full border border-black-[0.8] dark:border-white-[0.8]"
+            onChange={(e) => setDesc(e.target.value)}
           />
-          <button className="px-5 py-4 bg-teal-500 rounded  text-white ">
+          <button
+            className="px-5 py-4 bg-teal-500 rounded  text-white "
+            onClick={handleSubmit}
+          >
             Send
           </button>
         </div>
