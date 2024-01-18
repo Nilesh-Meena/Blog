@@ -1,13 +1,16 @@
 import React from "react";
 import Pagination from "./Pagination";
-import Card from "./Card";
+
 import { CardListProps, PostItem } from "@/interfaces/interfaces";
 import Image from "next/image";
 import Link from "next/link";
 
 const getData = async (page: CardListProps) => {
+  const catQuery = page.cat || "";
+  const pageQuery = page.page;
+  // console.log("cat ", catQuery, " - page", pageQuery);
   const response = await fetch(
-    `http://localhost:3000/api/posts?page=${page.page}`,
+    `http://localhost:3000/api/posts?page=${pageQuery}&cat=${catQuery}`,
     {
       cache: "no-cache",
     }
@@ -19,6 +22,8 @@ const getData = async (page: CardListProps) => {
 };
 
 async function CardList(page: CardListProps) {
+  // console.log(page);
+
   const { posts, totalPosts } = await getData(page);
   const POST_PER_PAGE = 4;
   // Boolean
@@ -34,16 +39,16 @@ async function CardList(page: CardListProps) {
         {posts?.map((item: PostItem, key: number) => (
           <div key={item._id} className="mb-12 lg:flex gap-12 items-center ">
             {/* Image */}
-            <div className="flex-1 aspect-square md::h-[240px] lg:h-[350px] relative">
-              {item.img && (
+            {item.img && (
+              <div className="flex-1 aspect-square md::h-[240px] lg:h-[350px] relative">
                 <Image
                   src={item.img}
                   alt="Image Icon"
                   fill
                   className="object-cover"
                 />
-              )}
-            </div>
+              </div>
+            )}
             {/* Text */}
             <div className="flex-1 mt-3 lg:mt-0 flex flex-col gap-8">
               <div>
@@ -54,14 +59,16 @@ async function CardList(page: CardListProps) {
                   {item.catSlug}
                 </span>
               </div>
-              <Link href="/">
-                <h1 className="text-3xl">{item.title}</h1>
+              <Link href={`/post/${item.slug}`}>
+                <h1 className="text-3xl hover:underline hover:underline-offset-4">
+                  {item.title}
+                </h1>
               </Link>
-              <p className="text-base font-light text-bgDarkTextSoft">
-                {item.desc}
+              <p className="text-base font-light text-bgDarkTextSoft ">
+                {item.desc.substring(0, 250)}...
               </p>
               <Link
-                href="/"
+                href={`/post/${item.slug}`}
                 className="border-b border-solid border-prime-red max-w-max py-[2px]"
               >
                 Read More

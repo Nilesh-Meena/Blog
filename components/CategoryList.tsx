@@ -43,7 +43,7 @@ const CategoryList = async () => {
       <div className="flex flex-wrap  justify-between gap-5">
         {data?.map((item: CategoryItem, key: number) => (
           <Link
-            href="/"
+            href={`/Blog?cat=${item.slug}`}
             key={item._id}
             className={` flex items-center gap-3 w-[45%] lg:w-[25%] xl:w-[15%] h-20 justify-center rounded-lg ${getBgColorSlug(
               item.slug

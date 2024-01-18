@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Button from "./ui/Button";
+import Link from "next/link";
 
 function Featured() {
   return (
@@ -30,6 +31,7 @@ function Featured() {
             reiciendis est? Nam, asperiores. Ipsam fugit libero alias nihil
             soluta quo hic perspiciatis quia?
           </p>
+
           <Button>Read More</Button>
         </div>
       </div>

@@ -34,9 +34,8 @@ const ArticleComponent = ({ title, coverImage, description }: ArticleProps) => {
           bg-light-white-100 border border-solid border-black
           transition-[0.2s]
           rounded-md 
-          hover:translate-x-[-0.25rem] hover:translate-y-[-0.25rem] hover:shadow-[0.25rem_0.25rem_rgba(0,0,0)] active:translate-x-0 active:shadow-none
-           cursor-pointer 
-          
+          shadow-[0.25rem_0.25rem_rgba(0,0,0)] active:translate-x-0 active:shadow-none
+          hover:cursor-pointer 
           "
       >
         {/* Cover Image */}

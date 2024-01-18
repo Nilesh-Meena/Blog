@@ -5,6 +5,7 @@ import NavLinks from "./NavLinks";
 import Toggle from "../ui/Toggle";
 import NavMobileLinks from "./NavMobileLinks";
 import AuthButton from "../AuthLink/AuthButton";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -22,14 +23,13 @@ const Navbar = () => {
                 <NavMobileLinks />
               </div>
               <div className="flex text-xl font-bold justify-center md:justify-normal whitespace-nowrap  w-full">
-                InkWell
+                <Link href="/">InkWell</Link>
               </div>
             </div>
 
             {/* Nav Items */}
             <div className="hidden lg:flex lg:gap-4 flex-1 text-center text-lg justify-center">
-              <NavLinks href="/">All</NavLinks>
-              <NavLinks href="/Blog">Blogs</NavLinks>
+              <NavLinks href="/">Blogs</NavLinks>
               <NavLinks href="/Tutorials">Tutorials</NavLinks>
               <NavLinks href="/">Books</NavLinks>
               <NavLinks href="/News">News</NavLinks>

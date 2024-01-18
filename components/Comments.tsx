@@ -1,9 +1,31 @@
+"use client";
+
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import useSWR from "swr";
+import { useSession } from "next-auth/react";
+import { CommentItemProps } from "@/interfaces/interfaces";
 
-function Comments() {
-  const status = "authenticated";
+const fetcher = async (url: string) => {
+  const response = await fetch(url);
+  const data = await response.json();
+  if (!response.ok) {
+    const error = new Error(data.message);
+    throw error;
+  }
+  return data;
+};
+
+function Comments({ postSlug }: { postSlug: string }) {
+  const { status } = useSession();
+  const { data, isLoading } = useSWR(
+    `http://localhost:3000/api/comments?postSlug=${postSlug}`,
+    fetcher
+  );
+  // console.log(data, typeof data);
+
+  console.log(data);
   return (
     <div className="mt-12">
       <h1 className="text-2xl text-bgDarkTextSoft mb-8">Comments</h1>
@@ -21,52 +43,34 @@ function Comments() {
         <Link href="/Subscribe"> Login to Comment</Link>
       )}
       {/* comments */}
+
       <div className="mt-12">
         {/* comment */}
-        <div className="mb-12">
-          {/* user */}
-          <div className="flex  items-center  gap-5 mb-5 ">
-            <Image
-              src="/Images/Avatar.jpg"
-              alt="Image"
-              width={50}
-              height={50}
-              className="rounded-full object-cover"
-            />
-            <div className="flex flex-col text-bgDarkTextSoft">
-              <span className="font-semibold">John Doe</span>
-              <span className="text-base">11/04/2024</span>
-            </div>
-          </div>
-          <p className="text-base font-light">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            architecto consequuntur magni autem praesentium eos, voluptas dicta
-            inventore exercitationem perferendis reiciendis quia. Commodi id
-            reiciendis est veritatis voluptates possimus voluptate!
-          </p>
-        </div>
-        <div className="mb-12">
-          {/* user */}
-          <div className="flex  items-center  gap-5 mb-5 ">
-            <Image
-              src="/Images/Avatar.jpg"
-              alt="Image"
-              width={50}
-              height={50}
-              className="rounded-full object-cover"
-            />
-            <div className="flex flex-col text-bgDarkTextSoft">
-              <span className="font-semibold">John Doe</span>
-              <span className="text-base">11/04/2024</span>
-            </div>
-          </div>
-          <p className="text-base font-light">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            architecto consequuntur magni autem praesentium eos, voluptas dicta
-            inventore exercitationem perferendis reiciendis quia. Commodi id
-            reiciendis est veritatis voluptates possimus voluptate!
-          </p>
-        </div>
+        {isLoading
+          ? "loading..."
+          : data?.map((item: CommentItemProps) => (
+              <div className="mb-12" key={item._id}>
+                {/* user */}
+                <div className="flex  items-center  gap-5 mb-5 ">
+                  {item.user.image && (
+                    <Image
+                      src={item.user.image}
+                      alt="Image"
+                      width={50}
+                      height={50}
+                      className="rounded-full object-cover"
+                    />
+                  )}
+                  <div className="flex flex-col text-bgDarkTextSoft">
+                    <span className="font-semibold">{item.user.name}</span>
+                    <span className="text-base">
+                      {new Date(item.createdAt).toLocaleDateString("en-GB")}
+                    </span>
+                  </div>
+                </div>
+                <p className="text-base font-light">{item.desc}</p>
+              </div>
+            ))}
       </div>
     </div>
   );
