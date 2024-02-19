@@ -52,8 +52,10 @@ export const POST = async (req: NextRequest) => {
   // Try and Catch
   try {
     const body = await req.json();
+    const userEmail =
+      session && session.user?.email ? session.user.email : undefined;
     const comment = await prisma?.comment.create({
-      data: { ...body, userEmail: session.user.email },
+      data: { ...body, userEmail },
     });
 
     return new NextResponse(JSON.stringify(comment), {

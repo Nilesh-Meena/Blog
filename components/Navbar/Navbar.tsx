@@ -9,9 +9,9 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <main className="mx-4 z-80 text-black   font-Domain">
+    <main className="mx-4 my-8 z-80 text-black font-Domain">
       <div
-        className="mx-4 border border-solid rounded-3xl border-black box-border shadow-[0.25rem_0.25rem_rgba(0,0,0)] dark:shadow-[0.25rem_0.25rem_rgba(255,255,255)] fixed top-6 left-2 right-2 bg-white z-50
+        className="mx-4 border border-solid rounded-3xl border-black box-border shadow-[0.25rem_0.25rem_rgba(0,0,0)] dark:shadow-[0.25rem_0.25rem_rgba(255,255,255)]  top-6 left-2 right-2 bg-white z-50
       dark:bg-black dark:border-white dark:text-white"
       >
         <div className="px-4  md:px-10 md:py-2 gap-8">

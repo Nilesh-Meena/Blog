@@ -2,24 +2,11 @@
 
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function AuthLinks() {
   const [isScrolled, setIsScrolled] = useState(false);
   const { data: session, status } = useSession();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setIsScrolled(scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   if (status === "loading") {
     return <div>Loading...</div>;
@@ -30,11 +17,8 @@ function AuthLinks() {
     return (
       <Link
         href="/Subscribe"
-        className={`hidden font-TWMedium font-bold dark:bg-black dark:active:shadow-none dark:text-white sm:block transition-[0.2s] px-6 py-2 rounded ${
-          isScrolled
-            ? "bg-prime-yello-secondary dark:text-black"
-            : "bg-white text-black"
-        } border border-solid dark:border-white border-black  translate-x-[-0.25rem] translate-y-[-0.25rem] shadow-[0.25rem_0.25rem_rgba(0,0,0)] dark:shadow-[0.25rem_0.25rem_rgba(255,255,255)] active:translate-x-0 active:shadow-none`}
+        className={`hidden font-TWMedium font-bold dark:bg-black dark:active:shadow-none dark:text-white sm:block transition-[0.2s] px-6 py-2 rounded 
+            bg-white text-black border border-solid dark:border-white border-black  translate-x-[-0.25rem] translate-y-[-0.25rem] shadow-[0.25rem_0.25rem_rgba(0,0,0)] dark:shadow-[0.25rem_0.25rem_rgba(255,255,255)] active:translate-x-0 active:shadow-none`}
       >
         Login
       </Link>
